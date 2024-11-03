@@ -1,0 +1,8 @@
+rate-limiting:
+  capacity: 100
+  refill-duration: 1m
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
