@@ -2,6 +2,9 @@ package com.github.ilim.backend.ilimEmailDeliveryServ.model;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import java.util.List;
+
 /**
  * Data Transfer Object (DTO) representing an email request.
  * It encapsulates the necessary details required to send an email.
@@ -17,9 +20,8 @@ public class EmailRequest {
     @Email(message = "To address should be a valid email")
     private String toAddress;
 
-    @Email(message = "CC address should be a valid email")
-    private String ccAddress; // Optional field
-
+    @NotEmpty(message = "CC addresses must contain valid emails")
+    private List<@Email(message = "Each CC address should be a valid email") String> ccAddresses; // List of CC addresses (optional)
 
     @NotBlank(message = "Subject is mandatory")
     private String subject;
@@ -31,9 +33,9 @@ public class EmailRequest {
     public EmailRequest() {
     }
 
-    public EmailRequest(String toAddress, String ccAddress, String fromAddress, String subject, String content) {
+    public EmailRequest(String toAddress, List<String> ccAddresses, String subject, String content) {
         this.toAddress = toAddress;
-        this.ccAddress = ccAddress;
+        this.ccAddresses = ccAddresses;
         this.subject = subject;
         this.content = content;
     }
@@ -47,12 +49,12 @@ public class EmailRequest {
         this.toAddress = toAddress;
     }
 
-    public String getCcAddress() {
-        return ccAddress;
+    public List<String> getCcAddresses() {
+        return ccAddresses;
     }
 
-    public void setCcAddress(String ccAddress) {
-        this.ccAddress = ccAddress;
+    public void setCcAddresses(List<String> ccAddresses) {
+        this.ccAddresses = ccAddresses;
     }
 
     public String getSubject() {
