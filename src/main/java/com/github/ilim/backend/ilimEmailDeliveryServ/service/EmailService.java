@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
+import java.util.List;
 
 /**
  * Service for sending emails.
@@ -37,9 +38,10 @@ public class EmailService {
 
             helper.setTo(emailRequest.getToAddress());
 
-            // Handle optional CC address
-            if (emailRequest.getCcAddress() != null && !emailRequest.getCcAddress().isEmpty()) {
-                helper.setCc(emailRequest.getCcAddress());
+            // Handle optional list of CC addresses
+            List<String> ccAddresses = emailRequest.getCcAddresses();
+            if (ccAddresses != null && !ccAddresses.isEmpty()) {
+                helper.setCc(ccAddresses.toArray(new String[0]));
             }
 
             helper.setSubject(emailRequest.getSubject());

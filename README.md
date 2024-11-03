@@ -9,5 +9,3 @@ Ilim Email Delivery Service is a robust Spring Boot application designed to hand
 - **Rate Limiting:** Restricts clients to a maximum of 100 requests per minute per IP address to ensure fair usage and prevent abuse.
 - **API Documentation:** Provides interactive API documentation and testing capabilities via Swagger UI.
 - **Global Exception Handling:** Centralizes error handling to deliver consistent and informative responses.
-- **Security Configurations:** Protects API endpoints using Spring Security, ensuring that only authorized users can access sensitive operations.
-- **Monitoring and Diagnostics:** Utilizes Spring Boot Actuator for comprehensive monitoring and health checks.
