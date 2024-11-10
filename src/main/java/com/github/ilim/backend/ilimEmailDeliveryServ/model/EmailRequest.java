@@ -20,7 +20,6 @@ public class EmailRequest {
     @Email(message = "To address should be a valid email")
     private String toAddress;
 
-    @NotEmpty(message = "CC addresses must contain valid emails")
     private List<@Email(message = "Each CC address should be a valid email") String> ccAddresses; // List of CC addresses (optional)
 
     @NotBlank(message = "Subject is mandatory")
